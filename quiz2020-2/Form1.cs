@@ -22,7 +22,9 @@ namespace quiz2020_2
             button2.Enabled = false;
         }
         Random rd = new Random();
-        public Rectangle square = new Rectangle(300, 300, 20, 20);
+        Point sq1 = new Point();
+        Point sq2 = new Point();
+        public Rectangle square = new Rectangle();
         double timeCount = 0;
         public bool isClick = false;
 
@@ -55,11 +57,14 @@ namespace quiz2020_2
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             isClick = true;
+            sq1.X = e.X;
+            sq1.Y = e.Y;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             isClick = false;
+            
             timer1.Start();
         }
 
@@ -67,8 +72,12 @@ namespace quiz2020_2
         {
             if (isClick)
             {
-                square.X = e.X;
-                square.Y = e.Y;
+                sq2.X = e.X;
+                sq2.Y = e.Y;
+                square.X = Math.Min(sq1.X, sq2.X);
+                square.Y = Math.Min(sq1.Y, sq2.Y);
+                square.Width = Math.Abs(sq1.X - sq2.X);
+                square.Height = Math.Abs(sq1.Y - sq2.Y);
                 Refresh();
                 frm2.Refresh();
             }
@@ -78,7 +87,7 @@ namespace quiz2020_2
         {
             Graphics g = e.Graphics;
             SolidBrush br = new SolidBrush(core.toolbox.get_color());
-            if (isClick) g.DrawRectangle(Pens.Red, square.X - 1, square.Y - 1, square.Width + 2,  square.Height + 2);
+            if (isClick) g.DrawRectangle(Pens.Red, square);
             else g.FillRectangle(br, square);
         }
 
