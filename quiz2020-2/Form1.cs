@@ -45,8 +45,8 @@ namespace quiz2020_2
             }
             if (timeCount % 5 == 0)
             {
-                square.X = rd.Next(pictureBox1.Width - 20);
-                square.Y = rd.Next(pictureBox1.Height - 20);
+                square.X = rd.Next(pictureBox1.Width - square.Width);
+                square.Y = rd.Next(pictureBox1.Height - square.Height);
                 Refresh();
                 frm2.Refresh();
             }
