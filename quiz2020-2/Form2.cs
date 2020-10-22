@@ -29,7 +29,7 @@ namespace quiz2020_2
             Graphics g = e.Graphics;
             SolidBrush br = new SolidBrush(core.toolbox.get_color());
             if (myparent.isClick) g.DrawRectangle(Pens.Red, myparent.square.X - 1, myparent.square.Y - 1, myparent.square.Width + 2, myparent.square.Height + 2);
-            g.FillRectangle(br, myparent.square);
+            else g.FillRectangle(br, myparent.square);
         }
     }
 }

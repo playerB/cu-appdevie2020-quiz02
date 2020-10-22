@@ -79,7 +79,7 @@ namespace quiz2020_2
             Graphics g = e.Graphics;
             SolidBrush br = new SolidBrush(core.toolbox.get_color());
             if (isClick) g.DrawRectangle(Pens.Red, square.X - 1, square.Y - 1, square.Width + 2,  square.Height + 2);
-            g.FillRectangle(br, square);
+            else g.FillRectangle(br, square);
         }
 
         private void button2_Click(object sender, EventArgs e)
